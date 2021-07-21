@@ -28,7 +28,58 @@ body{
 .container{
     background: linear-gradient(45deg, rgb(189 113 179 / 8%) 0%,rgb(24 6 56 / 13%) 100%);
 }
-.button{
-    margin: 15px;
-    color: #fff!important;
+.btn_btn{
+    background: #bc2dde17;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 15px;
+}
+input{
+    border: 1px solid #4e0e75c2;
+    padding: 5px 5px 5px 15px;
+    margin: 5px 5px 10px 15px!important;
+}
+.label_style{
+    color: #784796;
+    font-family: ui-monospace;
+    font-size: 15px;
+    width: 200px;
+
+}
+.title{
+    color: #dcaccf;
+    font-size: 25px;
+    font-family: ui-monospace;
+}
+.btn_submit{
+    background: #3a136591;
+    color: white;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    width: 120px;
+}
+.btn_submit:hover{
+    background: #e3aeeb91;
+    color: rgb(101, 14, 112);
+    border: 1px solid rgb(254, 250, 255);
+    border-radius: 15px;
+    width: 120px;
+}
+.btn_close{
+    width: 80px;
+    color: #2465;
+    background: #cfb8e038;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    
+}
+.label_login{
+    color: white;
+    font-size: 15px;
+    font-family: serif;
+}
+.title_cursos{  
+    color: #dcaccf;
+    border-top: 1px solid #d4c7e0!important;
+    border-bottom: 2px solid #e2bde1!important;
 }
