@@ -14,15 +14,18 @@
         $info = $result->fetch_assoc();
         $access_level = $info['acces_level'];
         $name = $info['full_name'];
+        $id_user = $info['id'];
         $count = $result->num_rows;
 
         if($count == 1 && $access_level == 1) {
             header('Location: ../views/admin.php');
             $_SESSION["user"] = $name;
             $_SESSION["level"] = $access_level;
+            $_SESSION["id_user"] = $id_user;
         } elseif ($count == 1 && $access_level == 2) {
             header('Location: ../views/user.php');            
             $_SESSION["user"] = $name;
+            $_SESSION["id_user"] = $id_user;
             $_SESSION["level"] = $access_level;
         } elseif ($count == 0) {
             header('Location: ../index.php');

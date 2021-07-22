@@ -1,3 +1,20 @@
+<?php
+
+    include './config/connection.php';
+    $db = new connection();
+
+    session_start();
+
+    if(isset($_SESSION['new_user'])) {
+        if($_SESSION['new_user'] == 1){
+            $message = "Usuario creado con exito";
+        }else {
+            $message = "Error en la creacion del nuevo usuario: ".$_SESSION['error_user'];
+        }
+    }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +37,7 @@
                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                     </svg>
                 </div>
-            </div> 
+            </div>
             <form action="./controllers/loginController.php" method="POST" style="margin: 120px;">            
                 <div class="form-group">
                     <label class="label_login" >Email</label>
@@ -32,6 +49,13 @@
                 </div>
                 <button type="submit" class="btn_btn">Submit</button>
             </form>
+            <?php
+                if(isset($message)){
+                    echo '<div class="alert alert-danger" role="alert">';
+                    echo $message;
+                    echo '</div>';
+                }
+            ?>
             <div class="row"style="justify-content: center;">
             <button type="button" class=" btn_btn" data-toggle="modal" data-target="#add_user">
                 Crear Usuario
@@ -47,26 +71,26 @@
                         </div>
                         <div class="modal-body">
                             <div>
-                                <form action="/controllers/newUserController.php" class="">
+                                <form action="./controllers/newUserController.php" method="POST">
                                     <div>
                                         <label class="label_style">Nombres Completos</label>
-                                        <input name ="full_name"type="text">
+                                        <input name="full_name" type="text" required>
                                     </div>
                                     <div>
                                         <label class="label_style">Correo Electronico</label>
-                                        <input name ="email"type="email">
+                                        <input name="email" type="email" required>
                                     </div>
                                     <div>
                                         <label class="label_style">Password</label>
-                                        <input name ="pasword"type="pasword">
+                                        <input name="password" type="password" required>
                                     </div>
-
+                                    
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn_close" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn_submit">Registrarse</button>
+                                    </div>
                                 </form>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn_close" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn_submit">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -84,29 +108,27 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div>
-                                <form action="/controllers/newUserController.php">
-                                    <div>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col" class="title_cursos">First</th>
-                                            <th scope="col" class="title_cursos">Last</th>
-                                            <th scope="col" class="title_cursos">Handle</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            </tr>
-                                        </tbody>
-                                        </table>
-                                    </div>
-
-                                </form>
-                            </div>
+                            <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Días</th>
+                                <th scope="col">Horario</th>
+                                </tr>
+                            </thead>
+                                <tbody>
+                                    <?php
+                                        $result = $db->courses();
+                                        while($curso = $result->fetch_assoc()) {
+                                            echo "<tr>";
+                                            echo "<td scope='col'>". $curso["name"]. "</td>";
+                                            echo "<td scope='col'>". $curso["weekdays"]. "</td>";
+                                            echo "<td scope='col'>". $curso["schedule"]. "</td>";
+                                            echo "</tr>";
+                                        }                                
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn_close" data-dismiss="modal">Close</button>
