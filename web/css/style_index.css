@@ -83,3 +83,36 @@ input{
     border-top: 1px solid #d4c7e0!important;
     border-bottom: 2px solid #e2bde1!important;
 }
+.add_courses{
+    width: 50%;
+    margin: 0 auto;
+}
+.text_welcome{
+    text-align: center;
+    font-size: 25px;
+    font-family: -webkit-pictograph;
+    color: white;
+    font-weight: bolder;
+}
+.list_courses{
+    font-family: fantasy;
+    font-size: 30px;
+    color: #fff;
+}
+.courses{
+    color: #f3eaf2;
+    font-weight: 100;
+    font-size: 25px;
+    font-family: emoji;
+}
+.btn-outline-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:active{
+    border: 1px solid #fff!important;
+    color: #e2b9e1!important;
+    background: 4c154359!important;
+}
+.btn-outline-primary:hover{
+    color: #f3eef3!important;
+    background: #ffffff59!important;
+}

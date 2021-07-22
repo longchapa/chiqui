@@ -3,7 +3,7 @@
 
         public $host = 'localhost';
         public $user = 'root';
-        public $password = 'Sfmb5ddd*';
+        public $password = '';
         public $database = 'prueba';
         public $connection;
 
